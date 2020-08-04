@@ -1,3 +1,4 @@
+[![deno doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/request/README.md)
 
 <a target="__blank" href="https://brave.com/">
 <img style="text-align: center" src="https://brave.com/wp-content/uploads/2019/01/logotype-full-color.svg" alt="drawing" width="220" />
