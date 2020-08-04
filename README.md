@@ -1,10 +1,12 @@
+
+<a target="_blank" href="https://brave.com/">
+<img style="text-align: center" src="https://brave.com/wp-content/uploads/2019/01/logotype-full-color.svg" alt="drawing" width="220" />
+</a>
+
+
 # Request
 
 API Calls - as simple as it gets :)
-
-<a target="_blank" href="https://brave.com/">
-    <img src="https://brave.com/wp-content/uploads/2019/01/logotype-full-color.svg" alt="drawing" width="100"/>
-</a>
 
 ## Usage Example
 
