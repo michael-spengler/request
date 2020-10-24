@@ -31,7 +31,14 @@ export class Request {
             body: JSON.stringify(data)
         })
 
-        let result: any = await response.json()
+        let result: any
+        try {
+            result = await response.json()
+        } catch (error) {
+            console.log("response seem not to be in JSON format")
+
+            result = {}
+        }
 
         return result
     }
