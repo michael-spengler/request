@@ -12,8 +12,15 @@ export class Request {
             redirect: options.redirect,
             referrerPolicy: options.referrerPolicy,
         })
+        
+        let result: any
+        try {
+            result = await response.json()
+        } catch (error) {
+            console.log("response seem not to be in JSON format")
 
-        let result = await response.json()
+            result = {}
+        }
 
         return result
     }
@@ -55,7 +62,14 @@ export class Request {
             referrerPolicy: options.referrerPolicy,
         })
 
-        let result: any = await response.json()
+        let result: any
+        try {
+            result = await response.json()
+        } catch (error) {
+            console.log("response seem not to be in JSON format")
+
+            result = {}
+        }
 
         return result
     }
@@ -73,7 +87,14 @@ export class Request {
             body: JSON.stringify(data)
         })
 
-        let result: any = await response.json()
+        let result: any
+        try {
+            result = await response.json()
+        } catch (error) {
+            console.log("response seem not to be in JSON format")
+
+            result = {}
+        }
 
         return result
     }
