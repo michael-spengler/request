@@ -1,0 +1,12 @@
+{
+  "$schema": "https://x.nest.land/eggs@0.3.8/src/schema.json",
+  "name": "request",
+  "entry": "mod.ts",
+  "description": "JSON API Calls, as simple as it gets",
+  "homepage": "https://github.com/michael-spengler/request",
+  "files": [
+    "mod.ts",
+    "README.md",
+    "LICENSE"
+  ]
+}
