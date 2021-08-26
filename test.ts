@@ -1,10 +1,9 @@
-import { Request } from './request.ts'
+import { Request } from "./mod.ts";
 
 Deno.test("get request", async (): Promise<void> => {
-    
-    const url = 'http://api.open-notify.org/iss-now.json' // :)
+  const url = "http://api.open-notify.org/iss-now.json"; // :)
 
-    const result = await Request.get(url) 
+  const result = await Request.get(url);
 
-    console.log(result)
+  console.log(result);
 });
