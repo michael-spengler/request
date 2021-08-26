@@ -1,28 +1,23 @@
+name: Publish
 
-# add "create patch release" or "create minor release" or "create major release" or "publish on nest.land" to your commit message to use this
-
-name: "release workflow"
 on:
-  push:
-    branches:
-      - main
+  create:
+    ref_type: 'tag'
+
 jobs:
-  release:
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - name: "setup" # check: https://github.com/actions/virtual-environments/issues/1777
-        uses: denolib/setup-deno@v2 
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
         with:
-         deno-version: v1.x
-      - name: "check patch"
-        if: contains(github.event.head_commit.message, 'create patch release')
-        run: deno run --allow-net https://deno.land/x/cicd/create-patch-release.ts ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }}
-      - name: "check minor"
-        if: contains(github.event.head_commit.message, 'create minor release')
-        run: deno run --allow-net https://deno.land/x/cicd/create-minor-release.ts ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }}
-      - name: "check major"
-        if: contains(github.event.head_commit.message, 'create major release')
-        run: deno run --allow-net https://deno.land/x/cicd/create-major-release.ts ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }}
-      - name: "check nest.land"
-        if: contains(github.event.head_commit.message, 'publish on nest.land')
-        run: deno run --allow-net --allow-read --allow-run https://deno.land/x/cicd/publish-on-nest.land.ts ${{ secrets.GITHUB_TOKEN }} ${{ secrets.NESTAPIKEY }} ${{ github.repository }}
+          deno-version: v1.x
+
+      - name: Publish
+        run: |
+          deno install -Af --unstable https://x.nest.land/eggs@0.3.8/eggs.ts
+          eggs link ${{ secrets.NESTAPIKEY }}
+          eggs publish --yes --no-check --version $(git describe --tags $(git rev-list --tags --max-count=1))
